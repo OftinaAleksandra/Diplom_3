@@ -20,6 +20,8 @@ public class Constructor {
     private final By sectionBuns = By.xpath(".//h2[text() = 'Булки']");
     private final By sectionSauce = By.xpath(".//h2[text() = 'Соусы']");
     private final By sectionFilling = By.xpath(".//h2[text() = 'Начинки']");
+    private final By currentConstructor = By.xpath("//div[contains(@class,'tab_tab_type_current__2BEPc')]");
+
 
     @Step
     public void isConstructorPageOpen() {
@@ -61,5 +63,9 @@ public class Constructor {
         new WebDriverWait(driver, 15)
                 .until(ExpectedConditions.visibilityOfElementLocated(sectionFilling));
         return driver.findElement(sectionFilling).isDisplayed();
+    }
+    @Step("Получение тексты выбранного конструктора")
+    public String getTextFromCurrentConstructor() {
+        return driver.findElement(currentConstructor).getText();
     }
 }

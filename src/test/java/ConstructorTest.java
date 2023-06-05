@@ -11,6 +11,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import page_object.Constructor;
 import page_object.MainPage;
+import static org.junit.Assert.assertEquals;
+
 
 public class ConstructorTest {
     private UserClient userClient;
@@ -39,7 +41,7 @@ public class ConstructorTest {
         Constructor constructor = new Constructor(driver);
         constructor.clickSectionFilling();
         constructor.clickSectionBuns();
-        constructor.isSectionBunsVisible();
+        assertEquals("Булки", constructor.getTextFromCurrentConstructor());
     }
 
     @Test
@@ -50,7 +52,7 @@ public class ConstructorTest {
         mainPage.clickConstructorButton();
         Constructor constructor = new Constructor(driver);
         constructor.clickSectionSauce();
-        constructor.isSectionSauceVisible();
+        assertEquals("Соусы", constructor.getTextFromCurrentConstructor());
     }
 
     @Test
@@ -61,7 +63,7 @@ public class ConstructorTest {
         mainPage.clickConstructorButton();
         Constructor constructor = new Constructor(driver);
         constructor.clickSectionFilling();
-        constructor.isSectionFillingVisible();
+        assertEquals("Начинки", constructor.getTextFromCurrentConstructor());
     }
 
     @After
